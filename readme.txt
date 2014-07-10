@@ -18,15 +18,15 @@ You can choose which social sharing icons and where the icons should be displaye
 You can add the Screen name of the user to attribute the Tweet to and add an account, which should be suggested to follow, after sharing a post.
 
 Supported Social Networks are:
-*   Twitter
-*   Facebook
+
+*   twitter
+*   facebook
 *   Google+
 *   LinkedIn
 *   Xing
 *   Pinterest
-*   Tumblr
+*   tumblr
 *   vk aka vkontakte
-
 
 Also, you have the option to share via email.
 
@@ -35,7 +35,7 @@ The Plugin is compatible to the webZunder Open Graph Plugin.
 The Icons which are used are FontAwesome Icons. 
 
 = HINT: = 
-> Try also the [webZunder open graph plugin](http://wordpress.org/plugins/webzunder/).By using the webZunder Open Graph Plugin, you can easily improve the presentation of your content in social networks like Google and Facebook and in search engine results. 
+> Try also the [webZunder open graph plugin](http://wordpress.org/plugins/webzunder/). By using the webZunder Open Graph Plugin, you can easily improve the presentation of your content in social networks like Google and Facebook and in search engine results. 
 >
 >You want to better monitor and control your social media activities? Then try it out the webZunder plugins in combination with webZunder. Simply try webZunder risk-free for 30 days and push on your own online marketing.
 >
@@ -45,7 +45,7 @@ The Icons which are used are FontAwesome Icons.
 == Installation ==
 1. upload the `sosh-icons` folder into the `/wp-content/plugins/` directory
 1. activate the Plugin through the `Plugin` menu in WordPress
-1. configure the plugin by going to the `Sharing Icons `menu that appears in your admin menu
+1. configure the plugin by going to the `Sharing Icons` menu that appears in your admin menu
 
 or
 
@@ -53,7 +53,7 @@ install the plugin directly through the WordPress Dashboard
 
 == Frequently Asked Questions ==
 = Are the icons responive?  =
-Yes, the Icons are responsive but when all icons are displayed the it doesn't looks nice. You could let it look better with Custom Css. 
+Yes, the Icons are responsive but when all icons are displayed, it doesn't looks nice. You could let it look better with Custom Css. 
 
 = Can I change the appearance? =
 Yes, just insert custom css.
