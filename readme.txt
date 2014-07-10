@@ -27,6 +27,7 @@ Supported Social Networks are:
 *   Tumblr
 *   vk aka vkontakte
 
+
 Also, you have the option to share via email.
 
 The Plugin is compatible to the webZunder Open Graph Plugin. 
