@@ -1,0 +1,120 @@
+# Copyright (C) 2014 
+# This file is distributed under the same license as the  package.
+msgid ""
+msgstr ""
+"Project-Id-Version: sosh-icons\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/sosh-icons\n"
+"POT-Creation-Date: 2014-07-10 11:54:12+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2014-07-10 14:07+0100\n"
+"Last-Translator: \n"
+"Language-Team: webZunder <chris@webzunder.com>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: en\n"
+"X-Generator: Poedit 1.6.3\n"
+
+#: sosh_icons.php:81
+msgid "Allgemein"
+msgstr "General"
+
+#: sosh_icons.php:82
+msgid "Erweitert"
+msgstr "Extended"
+
+#: sosh_icons.php:83
+msgid "Tipp"
+msgstr "Hint"
+
+#: sosh_icons.php:104
+msgid ""
+"Du willst deine Social Media Aktivitäten <b>besser kontrollieren und steuern "
+"können</b>? Dann probiere doch mal <b>das Plugin in Kombination \n"
+"        mit webZunder aus</b>. Ganz einfach <b>30 Tage unverbindlich testen "
+"</b> und das eigene Online Marketing anheizen."
+msgstr ""
+"You want to <b>better monitor and control your social media activities</b>? "
+"Then try it out the<b> plugin in combination with webZunder </b>. Simply try "
+"webZunder <b>risk-free for 30 days and push on your own online marketing</b>"
+
+#: sosh_icons.php:108
+msgid ""
+"Mehr Informationen dazu findest du auf <a href=\"%s\"> www.webzunder.com</a> "
+msgstr ""
+"You can find further information on <a href=\"%s\"> www.webzunder.com</a> "
+
+#: sosh_icons.php:111
+msgid ""
+"Probier auch mal unser <b>Open Graph Plugin</b>. Damit sehen deine Beiträge "
+"noch besser aus, wenn deine Leser diese teilen."
+msgstr ""
+"Try also our <b>Open Graph Plugin</b>. So your blogpost looks better, if "
+"readers share them."
+
+#: sosh_icons.php:114
+msgid ""
+"Mehr Informationen dazu findest du auf der <a href=\"%s\"> Seite im "
+"WordPress Repository</a> "
+msgstr ""
+"You can find further information on <a href=\"%s\"> our WordPress Repository "
+"Page</a>. "
+
+#: sosh_icons.php:120
+msgid ""
+"Du willst über Neuerungen rund um das Plugin informiert werden?</b><br>Dann "
+"trag dich einfach in unsere Mailingliste ein. (kein SPAM)"
+msgstr ""
+"<b>You want to be informed about innovations in the plugin? Then simply "
+"enter your E-Mail in our mailing list. (no SPAM)</b>"
+
+#: sosh_icons.php:122
+msgid "Anmelden"
+msgstr "Subscribe"
+
+#: sosh_icons.php:145
+msgid "Einstellung"
+msgstr "Settings"
+
+#: sosh_icons.php:160
+msgid "Erweiterung"
+msgstr "Extensions "
+
+#: sosh_icons.php:161
+msgid "Empfehlung"
+msgstr "Suggested People to follow"
+
+#: sosh_icons.php:167
+msgid "Welche Icons sollen angezeigt werden?"
+msgstr "Which icons should be displayed?"
+
+#: sosh_icons.php:171
+msgid "erweiterte Einstellung für Twitter"
+msgstr "extended settings for twitter"
+
+#: sosh_icons.php:240
+msgid "Über dem Inhalt"
+msgstr "above the content"
+
+#: sosh_icons.php:241
+msgid "Unter dem Inhalt"
+msgstr "below the content"
+
+#: sosh_icons.php:248
+msgid ""
+"Welcher Twitteraccount soll nach dem Teilen, deinem Leser empfohlen werden. "
+"Bitte ohne @ Zeichen. Hier ein <a href=\"https://dev.twitter.com/sites/"
+"default/files/images_documentation/share-related.png\">Beispiel-Bild wie das "
+"dann aussieht</a>."
+msgstr ""
+"Which Account should be suggested to your readers after sharing your post. "
+"Write without @. Example <a href=\"https://dev.twitter.com/sites/default/"
+"files/images_documentation/share-related.png\">Image</a>."
+
+#: sosh_icons.php:254
+msgid "Wie lautet dein Twitteraccount? Bitte ohne @ angeben."
+msgstr "Whats your Twittername? Note without @."
+
+#: sosh_icons.php:261
+msgid "Style hier die Buttons mit CSS."
+msgstr "Add your Custom CSS for styling."
