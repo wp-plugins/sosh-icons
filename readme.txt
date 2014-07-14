@@ -4,7 +4,7 @@ Tags: admin, blogpost, google, google plus, plugin, Post, posts, re-post, sharin
 Donate link: http://www.webzunder.com/de/
 Requires at least: 3.5
 Tested up to: 3.9.1
-Stable tag: 0.9
+Stable tag: 1.0
 License: GPL v2 or Later
 License URI: http://www.gnu.org/licenses/gpl-2.0
 
@@ -68,5 +68,9 @@ The Icons won't send user information to the Social Networks, if there are not b
 
 
 == Changelog ==
+= 1.0 =
+1. [Bugfix] Now the default settings won't display all icons after first installation.
+1. [Bugfix] if no icon selected there won't be displayed a empty "buttons" div
+
 = 0.9 =
 1. Inital Commit into WordPress Repository

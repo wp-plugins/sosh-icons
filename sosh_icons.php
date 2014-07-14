@@ -5,7 +5,7 @@ Plugin URI: http://www.webzunder.com/
 Description: Add social sharing Icons to your WordPress to get your blogposts better shared. 
 Author URI: http://www.twentyzen.com
 Author: twentyZen
-Version: 0.9
+Version: 1.0
 License: GPL v2 or Later
 Text Domain: sosh-icons
      
@@ -161,6 +161,9 @@ function soshicons_plugin_init() {
     add_settings_field('twt_related', __('Empfehlung','sosh-icons'), 'twt_related_check', 'soshicons_advanced_plugin', 'soshicons_plugin_advanced');
     add_settings_field('twt_via', 'Via', 'twt_via_check', 'soshicons_advanced_plugin', 'soshicons_plugin_advanced');
     add_settings_field('custom_css', 'Custom CSS', 'custom_css_check', 'soshicons_advanced_plugin', 'soshicons_plugin_advanced');
+    if(!get_option('soshicons_options')){
+        update_option( 'soshicons_options','');
+    }
 } 
 
 function soshicons_option_section_text(){
@@ -268,63 +271,63 @@ function soshicons_options_validate($input) {
 $options = get_option('soshicons_options');
 
     
-    if($input['twt_setting']!=""){
+    if(isset($input['twt_setting'])&& $input['twt_setting']!=""){
         $options['twt_setting'] = $input['twt_setting'];
     }else{
         $options['twt_setting'] = "0";
     }
     
-    if($input['fb_setting']!=""){
+    if(isset($input['fb_setting'])&& $input['fb_setting']!=""){
         $options['fb_setting'] = $input['fb_setting'];
     }else{
         $options['fb_setting'] = "0";
     }
     
-    if($input['gplus_setting']!=""){
+    if(isset($input['gplus_setting'])&& $input['gplus_setting']!=""){
         $options['gplus_setting'] = $input['gplus_setting'];
     }else{
         $options['gplus_setting'] = "0";
     }
     
-    if($input['xi_setting']!=""){
+    if(isset($input['xi_setting'])&& $input['xi_setting']!=""){
         $options['xi_setting'] = $input['xi_setting'];
     }else{
         $options['xi_setting'] = "0";
     }
     
-    if($input['link_setting']!=""){
+    if(isset($input['link_setting'])&& $input['link_setting']!=""){
         $options['link_setting'] = $input['link_setting'];
     }else{
         $options['link_setting'] = "0";
     }
     
-    if($input['pin_setting']!=""){
+    if(isset($input['pin_setting'])&& $input['pin_setting']!=""){
         $options['pin_setting'] = $input['pin_setting'];
     }else{
         $options['pin_setting'] = "0";
     }
     
     
-    if($input['tl_setting']!=""){
+    if(isset($input['tl_setting'])&& $input['tl_setting']!=""){
         $options['tl_setting'] = $input['tl_setting'];
     }else{
         $options['tl_setting'] = "0";
     }
     
     
-    if($input['vk_setting']!=""){
+    if(isset($input['vk_setting'])&& $input['vk_setting']!=""){
         $options['vk_setting'] = $input['vk_setting'];
     }else{
         $options['vk_setting'] = "0";
     }
     
-    if($input['mail_setting']!=""){
+    if(isset($input['mail_setting'])&& $input['mail_setting']!=""){
         $options['mail_setting'] = $input['mail_setting'];
     }else{
         $options['mail_setting'] = "0";
     }
     
-    if($input['position_setting']!=""){
+    if(isset($input['position_setting']) && $input['position_setting']!=""){
         $options['position_setting'] = $input['position_setting'];
     }else{
         $options['position_setting'] = "2";
@@ -359,7 +362,7 @@ if($input['twt_related']!=""){
 }
 
 function soshicons_displayicons($content){
-
+ 
     $options = get_option('soshicons_options');
     $adv_options=get_option('soshicons_advanced_options');
     global $wp_query;
@@ -406,40 +409,48 @@ function soshicons_displayicons($content){
     
     $rel=$adv_options['twt_related'];
     $via=$adv_options['twt_via'];
-        
+    $btn=0;
     
-    if($options['twt_setting'] != "0"){
+    if($options['twt_setting'] != "0" ){
        $twitter='<a class="twitter" onclick="Share.twitter(\''.$url.'\',\''.$title.'\',\''.$rel.'\',\''.$via.'\')"><i class="fa fa-twitter fa-2x"></i></a>';
+       $btn=1;
     }
     
-    if($options['fb_setting'] != "0"){
+    if($options['fb_setting'] != "0" ){
         $fb='<a class="fb" onclick="Share.facebook(\''.$url.'\',\''.$title.'\',\''.$image.'\',\''. esc_html($desc).'\')"><i class="fa fa-facebook fa-2x"></i></a>';
-       
+       $btn=1;
     }
-    if($options['gplus_setting'] != "0"){
+    if($options['gplus_setting'] != "0" ){
         $gplus='<a class="googleplus" onclick="Share.googleplus(\''.$url.'\',\''.$title.'\')"> <i class="fa fa-google-plus fa-2x"></i></a>';
+        $btn=1;
     }
-    if($options['xi_setting'] != "0"){
+    if($options['xi_setting'] != "0" ){
         $xing='<a class="xing" onclick="Share.xing(\''.$url.'\',\''.$title.'\')"> <i class="fa fa-xing fa-2x"></i></a>';
+        $btn=1;
     }
-    if($options['link_setting'] != "0"){
+    if($options['link_setting'] != "0" ){
         $linki='<a class="linkedin" onclick="Share.linkedin(\''.$url.'\',\''.$title.'\')"> <i class="fa fa-linkedin fa-2x"></i></a>';
+        $btn=1;
     }
-    if( $options['pin_setting'] != "0"){
+    if( $options['pin_setting'] != "0" ){
         $pin='<a class="pinterest" onclick="Share.pinterest(\''.$url.'\',\''.esc_html($desc).'\',\''.$image.'\')"> <i class="fa fa-pinterest fa-2x"></i></a>';
+        $btn=1;
     }
     if( $options['tl_setting'] != "0"){
         $tumblr='<a class="tumblr" onclick="Share.tumblr(\''.$url.'\',\''.$title.'\',\''.esc_html($desc).'\')"> <i class="fa fa-tumblr fa-2x"></i></a>';
+        $btn=1;
     }
     if( $options['vk_setting'] != "0"){
         $vk='<a class="vk" onclick="Share.vk(\''.$url.'\',\''.$title.'\',\''.$image.'\',\''. esc_html($desc).'\')"> <i class="fa fa-vk fa-2x"></i></a>';
+        $btn=1;
     }
-    if($options['mail_setting'] != "0"){
+    if($options['mail_setting'] != "0" ){
         $mail='<a class="mail" onclick="Share.mail(\''.$url.'\',\''.esc_html($desc).'\',\''.$title.'\')"> <i class="fa fa-envelope-o fa-2x"></i></a>';
+        $btn=1;
     }
   
    
-        
+  if($btn==1){
     $icons='<div class="buttons">';
     $icons.=$twitter;
     $icons.=$fb;
@@ -458,7 +469,9 @@ function soshicons_displayicons($content){
             $content.=$icons;
         }
     }
-    return $content;
+  }
+        return $content;
+ 
 }
 add_filter('the_content', 'soshicons_displayicons');
 
