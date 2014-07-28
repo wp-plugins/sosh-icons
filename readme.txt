@@ -1,6 +1,6 @@
 === webZunder Sharing Icons ===
 Contributors: chriskloss, twentyZen
-Tags: admin, blogpost, google, google plus, plugin, Post, posts, re-post, sharing, social, social network, social networks, socialnetwork, socialnetworks, webZunder,  Social Media, google+, Social Sharing, twitter, facebook, font awesome, fontawesome,custom css, tumblr, icons, sharing icons, pinterest,xing, linkedin, 2 click, mail,vkontakte, vk,
+Tags: admin, blogpost, google, google plus, plugin, Post, posts, re-post, sharing, social, social network, social networks, socialnetwork, socialnetworks, webZunder,  Social Media, google+, Social Sharing, twitter, facebook, font awesome, fontawesome,custom css, tumblr, icons, sharing icons, pinterest,xing, linkedin, 2 click, no canvas fingerprinting, mail,vkontakte, vk, low resources 
 Donate link: http://www.webzunder.com/de/
 Requires at least: 3.5
 Tested up to: 3.9.1
@@ -33,6 +33,8 @@ Also, you have the option to share via email.
 The Plugin is compatible to the webZunder Open Graph Plugin. 
 
 The Icons which are used are FontAwesome Icons. 
+
+We don't use or support canvas fingerprinting.
 
 = HINT: = 
 > Try also the [webZunder open graph plugin](http://wordpress.org/plugins/webzunder/). By using the webZunder Open Graph Plugin, you can easily improve the presentation of your content in social networks like Google and Facebook and in search engine results. 
