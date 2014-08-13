@@ -1,10 +1,10 @@
 === webZunder Sharing Icons ===
 Contributors: chriskloss, twentyZen
-Tags: admin, blogpost, google, google plus, plugin, Post, posts, re-post, sharing, social, social network, social networks, socialnetwork, socialnetworks, webZunder,  Social Media, google+, Social Sharing, twitter, facebook, font awesome, fontawesome,custom css, tumblr, icons, sharing icons, pinterest,xing, linkedin, 2 click, mail,vkontakte, vk,
+Tags: admin, blogpost, google, google plus, plugin, Post, posts, re-post, sharing, social, social network, social networks, socialnetwork, socialnetworks, webZunder,  Social Media, google+, Social Sharing, twitter, facebook, font awesome, fontawesome,custom css, tumblr, icons, sharing icons, pinterest,xing, linkedin, 2 click, no canvas fingerprinting, mail,vkontakte, vk, low resources 
 Donate link: http://www.webzunder.com/de/
 Requires at least: 3.5
-Tested up to: 3.9.1
-Stable tag: 1.0
+Tested up to: 4.0
+Stable tag: 1.0.1
 License: GPL v2 or Later
 License URI: http://www.gnu.org/licenses/gpl-2.0
 
@@ -34,6 +34,8 @@ The Plugin is compatible to the webZunder Open Graph Plugin.
 
 The Icons which are used are FontAwesome Icons. 
 
+
+
 = HINT: = 
 > Try also the [webZunder open graph plugin](http://wordpress.org/plugins/webzunder/). By using the webZunder Open Graph Plugin, you can easily improve the presentation of your content in social networks like Google and Facebook and in search engine results. 
 >
@@ -61,6 +63,9 @@ Yes, just insert custom css.
 = Is the plugin compliant to the German data protection? =
 The Icons won't send user information to the Social Networks, if there are not been clicked. But we won't say Yes because German law is a bit tricky ;) So you will Use this Plugin on your own risk.
 
+= Does your Plugin use Canvas Fingerprinting? =
+We don't use or support canvas fingerprinting.
+
 == Screenshots ==
 1. Plugin Option page
 2. Plugin Extended Option Page
@@ -68,6 +73,11 @@ The Icons won't send user information to the Social Networks, if there are not b
 
 
 == Changelog ==
+= 1.0.1 =
+1. [Bugfix] If plugin updated and new icons are available, they won't be displayed without your selection
+1. [Improvment] Tested with WordPress 4.0 Beta2 and added little version handling for future Development
+1. [Improvment] When Plugin is uninstalled, all options will be deleted out of your database, so your database won't be cluttered
+
 = 1.0 =
 1. [Bugfix] Now the default settings won't display all icons after first installation.
 1. [Bugfix] if no icon selected there won't be displayed a empty "buttons" div

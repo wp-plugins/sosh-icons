@@ -5,7 +5,7 @@ Plugin URI: http://www.webzunder.com/
 Description: Add social sharing Icons to your WordPress to get your blogposts better shared. 
 Author URI: http://www.twentyzen.com
 Author: twentyZen
-Version: 1.0
+Version: 1.0.1
 License: GPL v2 or Later
 Text Domain: sosh-icons
      
@@ -25,6 +25,8 @@ Text Domain: sosh-icons
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
+define( 'Sosh_Version', '1.0.1' );
+
 load_plugin_textdomain('sosh-icons', false, basename( dirname( __FILE__ ) ) . '/languages' );
 function soshicons_admin_styles()
  {
@@ -164,6 +166,21 @@ function soshicons_plugin_init() {
     if(!get_option('soshicons_options')){
         update_option( 'soshicons_options','');
     }
+    $version = get_option( 'sosh_icons_version' );
+    if ( version_compare( $version, Sosh_Version, '<' ) ) {
+		update_option( $version, Sosh_Version );
+	}
+
+    $options=get_option('soshicons_options');
+    //if new icons be integrated, the should be inserted into settarray, to avoid default displaying
+    $settarray=['twt_setting','fb_setting','gplus_setting','xi_setting','link_setting', 'pin_setting', 'tl_setting', 'vk_setting','mail_setting', 'position_setting'];
+    foreach($settarray as $setting){
+        if(!array_key_exists ($setting , $options)){
+            $options[$setting]='0';
+            update_option( 'soshicons_options', $options);
+        }
+    }
+
 } 
 
 function soshicons_option_section_text(){
@@ -491,4 +508,18 @@ echo $css;
 
 
 }
+
+/*function soshicons_uninstall(){
+    
+if ( __FILE__ != WP_UNINSTALL_PLUGIN )
+        exit();
+
+if ( ! current_user_can( 'activate_plugins' ) )
+        exit();
+
+    delete_option( 'sosh_icons_version' );
+    delete_option( 'soshicons_options' );
+    delete_option( 'soshicons_advanced_options' );
+}
+register_uninstall_hook( __FILE__, 'soshicons_uninstall' );*/
 ?>
