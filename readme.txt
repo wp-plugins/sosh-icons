@@ -74,7 +74,7 @@ We don't use or support canvas fingerprinting.
 
 == Changelog ==
 = 1.0.1.1 =
-1. [Bugfix] some changes caused error messages when older php versions in use. thanks at Dennis.
+1. [Bugfix] some changes caused error messages when older php versions in use. thanks Dennis.
 
 = 1.0.1 =
 1. [Bugfix] If plugin updated and new icons are available, they won't be displayed without your selection
