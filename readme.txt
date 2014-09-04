@@ -4,7 +4,7 @@ Tags: admin, blogpost, google, google plus, plugin, Post, posts, re-post, sharin
 Donate link: http://www.webzunder.com/de/
 Requires at least: 3.5
 Tested up to: 4.0
-Stable tag: 1.0.1.1
+Stable tag: 1.0.2
 License: GPL v2 or Later
 License URI: http://www.gnu.org/licenses/gpl-2.0
 
@@ -33,8 +33,6 @@ Also, you have the option to share via email.
 The Plugin is compatible to the webZunder Open Graph Plugin. 
 
 The Icons which are used are FontAwesome Icons. 
-
-
 
 = HINT: = 
 > Try also the [webZunder open graph plugin](http://wordpress.org/plugins/webzunder/). By using the webZunder Open Graph Plugin, you can easily improve the presentation of your content in social networks like Google and Facebook and in search engine results. 
@@ -73,8 +71,13 @@ We don't use or support canvas fingerprinting.
 
 
 == Changelog ==
+= 1.0.2 = 
+1. [Improvment] Now you can choose where the icons should be displayed.
+1. [Improvemnt] Tested with WordPress 4.0 RC2. So the plugin is ready for the future ;) 
+
 = 1.0.1.1 =
-1. [Bugfix] some changes caused error messages when older php versions in use. thanks at Dennis.
+1. [Bugfix] some changes caused error messages when older php versions in use. thanks Dennis.
+
 = 1.0.1 =
 1. [Bugfix] If plugin updated and new icons are available, they won't be displayed without your selection
 1. [Improvment] Tested with WordPress 4.0 Beta2 and added little version handling for future Development

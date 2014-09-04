@@ -5,7 +5,7 @@ Plugin URI: http://www.webzunder.com/
 Description: Add social sharing Icons to your WordPress to get your blogposts better shared. 
 Author URI: http://www.twentyzen.com
 Author: twentyZen
-Version: 1.0.1.1
+Version: 1.0.2
 License: GPL v2 or Later
 Text Domain: sosh-icons
      
@@ -25,7 +25,8 @@ Text Domain: sosh-icons
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-define( 'Sosh_Version', '1.0.1.1' );
+global $icon_version;
+$icon_version='1.0.2.';
 
 load_plugin_textdomain('sosh-icons', false, basename( dirname( __FILE__ ) ) . '/languages' );
 function soshicons_admin_styles()
@@ -42,14 +43,14 @@ function soshicons_admin_styles()
 
 /*enqueuing style/script in post*/  
 function soshicons_post_styles() {
-     if(is_single()){
+     
          wp_register_style( 'fontawesome', plugin_dir_url(__FILE__).'/font-awesome/css/font-awesome.min.css','','', 'screen' );
          wp_enqueue_style( 'fontawesome' );  
          wp_register_style( 'socialsharing', plugin_dir_url(__FILE__).'socialsharing.css','','', 'screen' );
          wp_enqueue_style( 'socialsharing' );
          wp_register_script('socialsharing', plugin_dir_url(__FILE__).'socialsharing.js',array(),'0.0.9',true);
          wp_enqueue_script('socialsharing');
-     }
+     
  }
  
 add_action( 'wp_enqueue_scripts', 'soshicons_post_styles' );
@@ -71,6 +72,8 @@ function soshicons_display_settings() {
 <?php
             if(isset($_GET['tab'])) {
                 $active_tab = $_GET['tab'];
+            } else if ($active_tab == 'show_options') { 
+                $active_tab = 'show_options';
             } else if ($active_tab == 'advanced_options') { 
                 $active_tab = 'advanced_options';
             }else if ($active_tab == 'hint_options') { 
@@ -81,6 +84,7 @@ function soshicons_display_settings() {
         ?>
 <h2 class="nav-tab-wrapper">
     <a href="?page=soshicons_settings&tab=general_options" class="nav-tab <?php echo $active_tab == 'general_options' ? 'nav-tab-active' : ''; ?>"><?php _e('Allgemein','sosh-icons');?></a>
+    <a href="?page=soshicons_settings&tab=show_options" class="nav-tab <?php echo $active_tab == 'show_options' ? 'nav-tab-active' : ''; ?>"><?php _e('Anzeigen','sosh-icons');?></a>
     <a href="?page=soshicons_settings&tab=advanced_options" class="nav-tab <?php echo $active_tab == 'advanced_options' ? 'nav-tab-active' : ''; ?>"><?php _e('Erweitert','sosh-icons');?></a>
     <a href="?page=soshicons_settings&tab=hint_options" class="nav-tab <?php echo $active_tab == 'hint_options' ? 'nav-tab-active' : ''; ?>"><?php _e('Tipp','sosh-icons');?></a>
 </h2>
@@ -92,6 +96,11 @@ function soshicons_display_settings() {
         if($active_tab =='general_options'){
             settings_fields( 'soshicons_options' ); /*Output nonce, action, and option_page fields for a settings page*/
             do_settings_sections('soshicons_plugin');
+            submit_button();
+        }else if($active_tab =='show_options'){
+        /*Anzeige Einstellung*/
+            settings_fields( 'soshicons_show_options' ); /*Output nonce, action, and option_page fields for a settings page*/
+            do_settings_sections('soshicons_show_plugin');
             submit_button();
         }else if($active_tab =='advanced_options'){
         /*Erweiterte Einstellung*/
@@ -140,6 +149,7 @@ add_action('admin_init', 'soshicons_plugin_init');
 
 
 function soshicons_plugin_init() {
+    global $icon_version;
     
     register_setting( 'soshicons_options', 'soshicons_options', 'soshicons_options_validate' );
     
@@ -156,19 +166,41 @@ function soshicons_plugin_init() {
     add_settings_field('vk_setting', 'VK', 'vk_setting_check', 'soshicons_plugin', 'soshicons_plugin_main');
     add_settings_field('mail_setting', 'E-Mail', 'mail_setting_check', 'soshicons_plugin', 'soshicons_plugin_main');
     add_settings_field('position_setting', 'Position', 'position_setting_check', 'soshicons_plugin', 'soshicons_plugin_main');
-            
+    
+    
+    register_setting( 'soshicons_show_options', 'soshicons_show_options', 'soshicons_showoptions_validate' );
+    
+    add_settings_section('soshicons_plugin_show', __('Anzeigen','sosh-icons'), 'soshicons_show_section_text', 'soshicons_show_plugin');
+    
+    add_settings_field('posts_show', __('Beiträge','sosh-icons'), 'posts_check', 'soshicons_show_plugin', 'soshicons_plugin_show');
+    add_settings_field('pages_show',  __('Seiten','sosh-icons'), 'pages_check', 'soshicons_show_plugin', 'soshicons_plugin_show');
+    add_settings_field('frontpage_show',  __('Startseite','sosh-icons'), 'frontpage_check', 'soshicons_show_plugin', 'soshicons_plugin_show');
+    add_settings_field('archive_show',  __('Archiv','sosh-icons'), 'archives_check', 'soshicons_show_plugin', 'soshicons_plugin_show');
+    
+    
    
     register_setting( 'soshicons_advanced_options', 'soshicons_advanced_options', 'soshicons_advoptions_validate' );
+    
     add_settings_section('soshicons_plugin_advanced', __('Erweiterung','sosh-icons'), 'soshicons_advanced_section_text', 'soshicons_advanced_plugin');
+    
     add_settings_field('twt_related', __('Empfehlung','sosh-icons'), 'twt_related_check', 'soshicons_advanced_plugin', 'soshicons_plugin_advanced');
     add_settings_field('twt_via', 'Via', 'twt_via_check', 'soshicons_advanced_plugin', 'soshicons_plugin_advanced');
     add_settings_field('custom_css', 'Custom CSS', 'custom_css_check', 'soshicons_advanced_plugin', 'soshicons_plugin_advanced');
+    
     if(!get_option('soshicons_options')){
         update_option( 'soshicons_options','');
     }
-    $version = get_option( 'sosh_icons_version' );
-    if ( version_compare( $version, Sosh_Version, '<' ) ) {
-		update_option( $version, Sosh_Version );
+    if(!get_option('soshicons_version')){
+        update_option( 'soshicons_version','0');
+    }
+    if (!get_option('soshicons_show_options') ) {
+        update_option( 'soshicons_show_options','');
+    }
+    
+    $version= get_option( 'soshicons_version' );
+    
+    if ( $version <=  $icon_version)  {
+		update_option( 'soshicons_version', $icon_version );
 	}
 
     $options=get_option('soshicons_options');
@@ -180,9 +212,18 @@ function soshicons_plugin_init() {
             update_option( 'soshicons_options', $options);
         }
     }
+    
+    $shows=get_option('soshicons_show_options');
+    $showarray=array('posts_show','pages_show','frontpage_show','archives_show');
+    foreach($showarray as $setting){
+        if(!array_key_exists ($setting , $shows)){
+            $shows[$setting]='0';
+            update_option( 'soshicons_show_options', $shows);
+        }
+    }
 
 } 
-
+/*section beschreibung*/
 function soshicons_option_section_text(){
     echo '<p>'.__('Welche Icons sollen angezeigt werden?','sosh-icons').'</p>';
 }
@@ -190,7 +231,11 @@ function soshicons_option_section_text(){
 function soshicons_advanced_section_text(){
     echo '<p>'.__('erweiterte Einstellung für Twitter','sosh-icons').'</p>';
 }
+function soshicons_show_section_text(){
+    echo '<p>'.__('Wo sollen die Icons angezeigt werden?','sosh-icons').'</p>';
+}
 
+/*allgemein*/
 function twt_setting_check(){
     $options=get_option('soshicons_options');
    echo '<li><i class="fa fa-twitter fa-2x option"></i>';
@@ -262,6 +307,31 @@ function position_setting_check(){
     echo "</select>";
 }
  
+/*anzeige*/
+
+function posts_check(){
+   $showoptions=get_option('soshicons_show_options');
+   echo '<input type="checkbox" id="posts_show" name="soshicons_show_options[posts_show]" value="1"'. checked( "1", $showoptions['posts_show'], false ).' />';
+}
+
+function pages_check(){
+   $showoptions=get_option('soshicons_show_options');
+   echo '<input type="checkbox" id="pages_show" name="soshicons_show_options[pages_show]" value="1"'. checked( "1", $showoptions['pages_show'], false ).' />';
+}
+
+function frontpage_check(){
+   $showoptions=get_option('soshicons_show_options');
+   echo '<input type="checkbox" id="frontpage_show" name="soshicons_show_options[frontpage_show]" value="1"'. checked( "1", $showoptions['frontpage_show'], false ).' />';
+}
+
+function archives_check(){
+   $showoptions=get_option('soshicons_show_options');
+   echo '<input type="checkbox" id="archives_show" name="soshicons_show_options[archives_show]" value="1"'. checked( "1", $showoptions['archives_show'], false ).' />';
+}
+
+
+
+/*Erweitert*/
 function twt_related_check(){
     $advoptions=get_option('soshicons_advanced_options');
          echo '<input type="text" id="twt_related" name="soshicons_advanced_options[twt_related]" value="'.$advoptions['twt_related'].'" />';
@@ -283,7 +353,7 @@ function custom_css_check(){
     
 }
     
-
+/*Allgemein Validierung*/
 function soshicons_options_validate($input) {
 $options = get_option('soshicons_options');
 
@@ -354,7 +424,35 @@ $options = get_option('soshicons_options');
 return $options;
 
 }
+/*Anzeigen Validierung*/
+function soshicons_showoptions_validate($input) {
+$showoptions = get_option('soshicons_show_options');
+   
+    if(isset($input['posts_show'])&& $input['posts_show']!=""){
+        $showoptions['posts_show'] = $input['posts_show'];
+    }else{
+        $showoptions['posts_show'] = "0";
+    }
+    if(isset($input['pages_show'])&& $input['pages_show']!=""){
+        $showoptions['pages_show'] = $input['pages_show'];
+    }else{
+        $showoptions['pages_show'] = "0";
+    }
+    if(isset($input['frontpage_show'])&& $input['frontpage_show']!=""){
+        $showoptions['frontpage_show'] = $input['frontpage_show'];
+    }else{
+        $showoptions['frontpage_show'] = "0";
+    }
+    if(isset($input['archives_show'])&& $input['archives_show']!=""){
+       $showoptions['archives_show'] = $input['archives_show'];
+    }else{
+        $showoptions['archives_show'] = "0";
+    }
+    
+    return $showoptions;
+}
 
+/*Erweitert Validierung*/
 function soshicons_advoptions_validate($input){
 $options=get_option('soshicons_advanced_options');
 if($input['twt_related']!=""){
@@ -379,7 +477,7 @@ if($input['twt_related']!=""){
 }
 
 function soshicons_displayicons($content){
- 
+   
     $options = get_option('soshicons_options');
     $adv_options=get_option('soshicons_advanced_options');
     global $wp_query;
@@ -399,8 +497,8 @@ function soshicons_displayicons($content){
             
             }else{
                 $post_object = get_post(get_the_ID());
-                $content= $post_object->post_content;
-                $desc = substr( strip_tags( $content ), 0, 160 );
+                $cont= $post_object->post_content;
+                $desc = substr( strip_tags( $cont ), 0, 160 );
                 
                 
             }
@@ -465,7 +563,33 @@ function soshicons_displayicons($content){
         $mail='<a class="mail" onclick="Share.mail(\''.$url.'\',\''.esc_html($desc).'\',\''.$title.'\')"> <i class="fa fa-envelope-o fa-2x"></i></a>';
         $btn=1;
     }
-  
+    
+    $show= get_option('soshicons_show_options');
+	wp_reset_query();
+        
+    if ( (is_page()) && ($show['pages_show'] != 1) ) {
+		$content=$content.'pages';	
+        return $content;
+    }
+    
+    if ( (is_front_page()||is_home()) && ($show['frontpage_show'] != 1) ) {
+		$content=$content.'home';	
+        return $content;
+    }
+	if ( (is_archive()) && ($show['archives_show'] != 1) ) {
+		$content=$content.'archives';	
+        return $content;
+    }
+    
+    
+    if ( (is_single()) && ($show['posts_show'] != 1) ) {
+			$content=$content.'posts';
+            return $content;
+    }
+    
+	
+	
+  $new_content=$content;
    
   if($btn==1){
     $icons='<div class="buttons">';
@@ -479,18 +603,18 @@ function soshicons_displayicons($content){
     $icons.=$vk;
     $icons.=$mail;
     $icons.='</diV>';
-    if(is_single()){
+    
         if($options['position_setting']=="1"){
-            $content=$icons.$content;
+            $new_content=$icons.$content;
         }else{
-            $content.=$icons;
+            $new_content.=$icons;
         }
     }
-  }
-        return $content;
+  
+        return $new_content;
  
 }
-add_filter('the_content', 'soshicons_displayicons');
+add_filter('the_content', 'soshicons_displayicons',10);
 
 add_action( 'wp_head', 'soshicons_custom_css' );
 function soshicons_custom_css() {
@@ -509,17 +633,4 @@ echo $css;
 
 }
 
-/*function soshicons_uninstall(){
-    
-if ( __FILE__ != WP_UNINSTALL_PLUGIN )
-        exit();
-
-if ( ! current_user_can( 'activate_plugins' ) )
-        exit();
-
-    delete_option( 'sosh_icons_version' );
-    delete_option( 'soshicons_options' );
-    delete_option( 'soshicons_advanced_options' );
-}
-register_uninstall_hook( __FILE__, 'soshicons_uninstall' );*/
 ?>
