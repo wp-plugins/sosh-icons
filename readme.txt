@@ -4,7 +4,7 @@ Tags: admin, blogpost, google, google plus, plugin, Post, posts, re-post, sharin
 Donate link: http://www.webzunder.com/de/
 Requires at least: 3.5
 Tested up to: 4.0
-Stable tag: 1.0.2
+Stable tag: 1.0.2.1
 License: GPL v2 or Later
 License URI: http://www.gnu.org/licenses/gpl-2.0
 
@@ -71,6 +71,9 @@ We don't use or support canvas fingerprinting.
 
 
 == Changelog ==
+= 1.0.2.1 =
+1. [Bugfix] removed some debug data
+
 = 1.0.2 = 
 1. [Improvment] Now you can choose where the icons should be displayed.
 1. [Improvemnt] Tested with WordPress 4.0 RC2. So the plugin is ready for the future ;) 

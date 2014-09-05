@@ -5,7 +5,7 @@ Plugin URI: http://www.webzunder.com/
 Description: Add social sharing Icons to your WordPress to get your blogposts better shared. 
 Author URI: http://www.twentyzen.com
 Author: twentyZen
-Version: 1.0.2
+Version: 1.0.2.1
 License: GPL v2 or Later
 Text Domain: sosh-icons
      
@@ -26,7 +26,7 @@ Text Domain: sosh-icons
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 global $icon_version;
-$icon_version='1.0.2.';
+$icon_version='1.0.2.1';
 
 load_plugin_textdomain('sosh-icons', false, basename( dirname( __FILE__ ) ) . '/languages' );
 function soshicons_admin_styles()
@@ -568,22 +568,22 @@ function soshicons_displayicons($content){
 	wp_reset_query();
         
     if ( (is_page()) && ($show['pages_show'] != 1) ) {
-		$content=$content.'pages';	
+			
         return $content;
     }
     
     if ( (is_front_page()||is_home()) && ($show['frontpage_show'] != 1) ) {
-		$content=$content.'home';	
+			
         return $content;
     }
 	if ( (is_archive()) && ($show['archives_show'] != 1) ) {
-		$content=$content.'archives';	
+			
         return $content;
     }
     
     
     if ( (is_single()) && ($show['posts_show'] != 1) ) {
-			$content=$content.'posts';
+			
             return $content;
     }
     
