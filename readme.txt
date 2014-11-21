@@ -4,7 +4,7 @@ Tags: admin, blogpost, google, google plus, plugin, Post, posts, re-post, sharin
 Donate link: http://www.webzunder.com/de/
 Requires at least: 3.5
 Tested up to: 4.0
-Stable tag: 1.0.2.1
+Stable tag: 1.0.2.2
 License: GPL v2 or Later
 License URI: http://www.gnu.org/licenses/gpl-2.0
 
@@ -71,6 +71,10 @@ We don't use or support canvas fingerprinting.
 
 
 == Changelog ==
+= 1.0.2.2 =
+1. [Bugfix] changed the image handling. 
+
+
 = 1.0.2.1 =
 1. [Bugfix] removed some debug data
 
