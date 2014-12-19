@@ -3,7 +3,7 @@ Contributors: chriskloss, twentyZen
 Tags: admin, blogpost, google, google plus, plugin, Post, posts, re-post, sharing, social, social network, social networks, socialnetwork, socialnetworks, webZunder,  Social Media, google+, Social Sharing, twitter, facebook, font awesome, fontawesome,custom css, tumblr, icons, sharing icons, pinterest,xing, linkedin, 2 click, no canvas fingerprinting, mail,vkontakte, vk, low resources 
 Donate link: http://www.webzunder.com/de/
 Requires at least: 3.5
-Tested up to: 4.0
+Tested up to: 4.1
 Stable tag: 1.0.2.2
 License: GPL v2 or Later
 License URI: http://www.gnu.org/licenses/gpl-2.0
